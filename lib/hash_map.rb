@@ -6,7 +6,7 @@ require 'pry-byebug'
 # Create and work with data structure, HashMap
 class HashMap
   def initialize
-    @buckets = Array.new(16) 
+    @buckets = Array.new(16)
     @capacity = @buckets.length
     @load_factor = 0.75
   end
@@ -61,7 +61,7 @@ class HashMap
   end
 
   def length
-    @buckets.map{ |bucket| bucket&.key }.compact.count
+    @buckets.map { |bucket| bucket&.key }.compact.count
   end
 
   def clear
@@ -69,15 +69,15 @@ class HashMap
   end
 
   def keys
-    @buckets.map{ |bucket| bucket&.key }.compact
+    @buckets.map { |bucket| bucket&.key }.compact
   end
 
   def values
-    @buckets.map{ |bucket| bucket&.value }.compact
+    @buckets.map { |bucket| bucket&.value }.compact
   end
 
   def entries
-    buckets_with_data = @buckets.select { |bucket| !bucket&.key.nil? }
+    buckets_with_data = @buckets.reject { |bucket| bucket&.key.nil? }
     buckets_with_data.map { |b| [b.key, b.value] }
   end
 end
