@@ -8,7 +8,7 @@ class HashMap
   def initialize
     @buckets = Array.new(16) 
     @capacity = @buckets.length
-    @load_factor = 0.75   # i.e. when we grow our buckets
+    @load_factor = 0.75
   end
 
   def hash(key)
@@ -65,7 +65,7 @@ class HashMap
   end
 
   def clear
-    @buckets = Array.new(16)
+    @buckets = Array.new(@capacity)
   end
 
   def keys
@@ -81,32 +81,3 @@ class HashMap
     buckets_with_data.map { |b| [b.key, b.value] }
   end
 end
-
-# Initialize a new HashMap
-hash_map = HashMap.new()
-
-# Set key-value pairs
-hash_map.set("key1", "value1")
-hash_map.set("key2", "value2")
-hash_map.set("key3", "value3")
-
-# # Get all keys, values, or entries
-keys = hash_map.keys()
-values = hash_map.values()
-entries = hash_map.entries()
-
-puts keys.to_s    # Output: ["key1", "key2"]
-puts values.to_s  # Output: ["value1", "value2"]
-puts entries.to_s # Output: [["key1", "value1"], ["key2", "value2"]]
-
-hash_map.clear
-
-keys = hash_map.keys()  # Output: []
-values = hash_map.values()
-entries = hash_map.entries()
-
-puts keys.to_s    # Output: ["key1", "key2"]
-puts values.to_s  # Output: ["value1", "value2"]
-puts entries.to_s # Output: [["key1", "value1"], ["key2", "value2"]]
-puts hash_map.has?('key7') # should be false
-puts hash_map.has?('key2') # should be true
